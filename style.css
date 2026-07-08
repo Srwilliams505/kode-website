@@ -141,3 +141,42 @@ nav a {
     }
 
 }
+.product-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 80px 60px;
+}
+
+.product-page img {
+    width: 100%;
+}
+
+.product-info h1 {
+    font-size: 48px;
+    letter-spacing: 3px;
+}
+
+.product-info p {
+    color: #bdbdbd;
+    line-height: 1.6;
+}
+
+.sizes button {
+    background: transparent;
+    color: white;
+    border: 1px solid #333;
+    padding: 14px 20px;
+    margin-right: 10px;
+}
+
+.add-cart {
+    margin-top: 30px;
+    width: 100%;
+    padding: 18px;
+    background: white;
+    color: black;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
