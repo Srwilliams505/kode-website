@@ -456,3 +456,9 @@ nav a {
 .brown-circle{
     background: #6f4e37;
 }
+
+.size-options button.selected {
+    background: white;
+    color: black;
+    border-color: white;
+}
