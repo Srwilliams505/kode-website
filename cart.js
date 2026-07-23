@@ -3,6 +3,18 @@ const cartTotalDisplay = document.querySelector("#cart-total");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+function updateCartCount() {
+    const totalQuantity = cart.reduce((sum, product) => {
+        return sum + product.quantity;
+    }, 0);
+
+    const cartLinks = document.querySelectorAll(".cart-link");
+
+    cartLinks.forEach(link => {
+        link.textContent = `Cart (${totalQuantity})`;
+    });
+}
+
 function displayCart() {
     cartItemsContainer.innerHTML = "";
 
@@ -11,6 +23,8 @@ function displayCart() {
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
         cartTotalDisplay.textContent = "$0.00";
+
+        updateCartCount();
         return;
     }
 
@@ -46,6 +60,7 @@ function displayCart() {
 
     cartTotalDisplay.textContent = `$${total.toFixed(2)}`;
 
+    updateCartCount();
     addRemoveListeners();
 }
 
@@ -54,7 +69,7 @@ function addRemoveListeners() {
 
     removeButtons.forEach(button => {
         button.addEventListener("click", () => {
-            const index = button.dataset.index;
+            const index = Number(button.dataset.index);
 
             cart.splice(index, 1);
 

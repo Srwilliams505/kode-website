@@ -47,6 +47,24 @@ if (addToCartButton) {
 
         localStorage.setItem("cart", JSON.stringify(cart));
 
+        updateCartCount();
+
         alert(`${product.name} added to cart.`);
     });
 }
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const totalQuantity = cart.reduce((sum, product) => {
+        return sum + product.quantity;
+    }, 0);
+
+    const cartLinks = document.querySelectorAll(".cart-link");
+
+    cartLinks.forEach(link => {
+        link.textContent = `Cart (${totalQuantity})`;
+    });
+}
+
+updateCartCount();
